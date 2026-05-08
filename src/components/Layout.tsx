@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Outlet, NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import { 
-  Brain, Menu, X, ChevronDown, Layers, Network, Cpu, GitBranch, Zap, Home, 
-  BookOpen, ChevronRight, ExternalLink, Github, Linkedin, Globe, 
+import { Outlet, NavLink, Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  Brain, Menu, X, ChevronDown, Layers, Network, Cpu, GitBranch, Zap, Home,
+  ChevronRight, Github, Linkedin, Globe,
   FolderTree, GraduationCap, Sparkles
 } from 'lucide-react'
 
@@ -74,32 +74,30 @@ const chaptersData = {
 
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [openChapter, setOpenChapter] = useState<string | null>(null)
+  const [openChapter, setOpenChapter] = useState(null)
   const location = useLocation()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const activeLab = searchParams.get('lab')
-  
+
   const showSidebar = location.pathname.startsWith('/chapter')
   const currentChapterMatch = location.pathname.match(/\/chapter(\d+)/)
   const currentChapter = currentChapterMatch ? `chapter${currentChapterMatch[1]}` : null
-  const currentChapterData = currentChapter && chaptersData[currentChapter as keyof typeof chaptersData]
+  const currentChapterData = currentChapter && chaptersData[currentChapter]
 
-  // Auto-expand current chapter when navigating to a chapter page
   useEffect(() => {
     if (currentChapter && openChapter !== currentChapter) {
       setOpenChapter(currentChapter)
     }
-  }, [currentChapter])
+  }, [currentChapter, openChapter])
 
-  // Close sidebar on route change (mobile)
   useEffect(() => {
     setSidebarOpen(false)
   }, [location.pathname])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
-      {/* Enhanced Navbar */}
+      {/* Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -112,8 +110,8 @@ export default function Layout() {
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             )}
-            
-            <a className="flex items-center gap-2.5 group" href="/">
+
+            <Link className="flex items-center gap-2.5 group" to="/">
               <div className="relative">
                 <div className="absolute inset-0 bg-blue-500 rounded-lg blur-md opacity-30 group-hover:opacity-50 transition-opacity"></div>
                 <div className="relative w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
@@ -124,44 +122,49 @@ export default function Layout() {
                 <span className="text-xl font-bold tracking-tight text-slate-800">
                   DeepLab <span className="text-blue-600">3D</span>
                 </span>
-                <span className="text-[10px] font-medium text-slate-400 -mt-0.5">Interactive Learning</span>
+                <span className="text-[10px] font-medium text-slate-400 -mt-0.5">
+                  Interactive Learning
+                </span>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-5">
-            <a 
-              href="/developer" 
+            <Link
+              to="/developer"
               className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-1.5 group"
             >
               <GraduationCap size={15} className="opacity-60 group-hover:opacity-100" />
               About Developer
-            </a>
+            </Link>
+
             <div className="h-5 w-px bg-slate-200" />
-            
+
             <div className="flex items-center gap-2">
-              <a 
-                href="https://neelesh-ranpuriya.vercel.app/" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://neelesh-ranpuriya.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
                 className="p-1.5 text-slate-400 hover:text-emerald-600 transition-all hover:scale-105"
                 aria-label="Portfolio"
               >
                 <Globe size={18} />
               </a>
-              <a 
-                href="https://github.com/NeeleshRanpuriya" 
-                target="_blank" 
-                rel="noreferrer" 
+
+              <a
+                href="https://github.com/NeeleshRanpuriya"
+                target="_blank"
+                rel="noreferrer"
                 className="p-1.5 text-slate-400 hover:text-slate-800 transition-all hover:scale-105"
                 aria-label="GitHub"
               >
                 <Github size={18} />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/neelesh-ranpuriya-0920512b2/?skipRedirect=true" 
-                target="_blank" 
-                rel="noreferrer" 
+
+              <a
+                href="https://www.linkedin.com/in/neelesh-ranpuriya-0920512b2/?skipRedirect=true"
+                target="_blank"
+                rel="noreferrer"
                 className="p-1.5 text-slate-400 hover:text-[#0077b5] transition-all hover:scale-105"
                 aria-label="LinkedIn"
               >
@@ -173,7 +176,6 @@ export default function Layout() {
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Mobile overlay */}
         {showSidebar && sidebarOpen && (
           <div
             className="fixed inset-0 z-30 bg-black/30 backdrop-blur-sm lg:hidden transition-opacity duration-300"
@@ -181,7 +183,6 @@ export default function Layout() {
           />
         )}
 
-        {/* Enhanced Sidebar */}
         {showSidebar && (
           <aside
             className={`
@@ -191,17 +192,21 @@ export default function Layout() {
             `}
             style={{ marginTop: '64px' }}
           >
-            {/* Sidebar Header */}
             <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 bg-gradient-to-r from-slate-50/50 to-white">
               <div className="flex items-center gap-2.5">
                 <div className="p-1.5 bg-blue-50 rounded-lg">
                   <FolderTree size={16} className="text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Learning Path</p>
-                  <p className="text-[11px] text-slate-500 -mt-0.5">Deep Learning Curriculum</p>
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    Learning Path
+                  </p>
+                  <p className="text-[11px] text-slate-500 -mt-0.5">
+                    Deep Learning Curriculum
+                  </p>
                 </div>
               </div>
+
               <button
                 type="button"
                 onClick={() => setSidebarOpen(false)}
@@ -219,7 +224,7 @@ export default function Layout() {
                   const isChapter = Boolean(chapterKey)
                   const isExpanded = chapterKey ? openChapter === chapterKey : false
                   const isActiveChapter = chapterKey ? currentChapter === chapterKey : false
-                  const chapter = chapterKey ? chaptersData[chapterKey as keyof typeof chaptersData] : null
+                  const chapter = chapterKey ? chaptersData[chapterKey] : null
 
                   return (
                     <div key={path} className="relative">
@@ -242,18 +247,29 @@ export default function Layout() {
                             }
                           `}
                         >
-                          <div className={`
-                            p-1 rounded-lg transition-all duration-200
-                            ${isActiveChapter || isExpanded ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'}
-                          `}>
+                          <div
+                            className={`
+                              p-1 rounded-lg transition-all duration-200
+                              ${isActiveChapter || isExpanded
+                                ? 'bg-blue-100 text-blue-600'
+                                : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
+                              }
+                            `}
+                          >
                             <Icon size={16} />
                           </div>
+
                           <div className="flex-1 min-w-0">
-                            <div className="font-semibold leading-tight tracking-tight">{label}</div>
+                            <div className="font-semibold leading-tight tracking-tight">
+                              {label}
+                            </div>
                             {sub && (
-                              <div className="text-[11px] text-slate-400 mt-1 leading-relaxed line-clamp-1">{sub}</div>
+                              <div className="text-[11px] text-slate-400 mt-1 leading-relaxed line-clamp-1">
+                                {sub}
+                              </div>
                             )}
                           </div>
+
                           <ChevronDown
                             size={16}
                             className={`
@@ -276,15 +292,24 @@ export default function Layout() {
                         >
                           {({ isActive }) => (
                             <>
-                              <div className={`
-                                p-1 rounded-lg transition-all duration-200
-                                ${isActive ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'}
-                              `}>
+                              <div
+                                className={`
+                                  p-1 rounded-lg transition-all duration-200
+                                  ${isActive
+                                    ? 'bg-blue-100 text-blue-600'
+                                    : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
+                                  }
+                                `}
+                              >
                                 <Icon size={16} />
                               </div>
+
                               <div className="flex-1 min-w-0">
-                                <div className="font-semibold leading-tight tracking-tight">{label}</div>
+                                <div className="font-semibold leading-tight tracking-tight">
+                                  {label}
+                                </div>
                               </div>
+
                               {isActive && (
                                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5"></div>
                               )}
@@ -293,7 +318,6 @@ export default function Layout() {
                         </NavLink>
                       )}
 
-                      {/* Expandable sections */}
                       {isChapter && chapter && isExpanded && (
                         <div className="mt-2 ml-11 space-y-1 border-l-2 border-blue-100 pl-4 transition-all duration-200">
                           <div className="flex items-center gap-1.5 mb-2 mt-1">
@@ -302,8 +326,10 @@ export default function Layout() {
                               {chapter.subtitle}
                             </span>
                           </div>
+
                           {chapter.sections.map((section) => {
                             const isActiveLab = activeLab === section.id
+
                             return (
                               <button
                                 key={section.id}
@@ -319,10 +345,16 @@ export default function Layout() {
                                   }
                                 `}
                               >
-                                <ChevronRight size={12} className={`
-                                  transition-transform duration-150 flex-shrink-0
-                                  ${isActiveLab ? 'text-blue-500 translate-x-0.5' : 'text-slate-300 group-hover:translate-x-0.5'}
-                                `} />
+                                <ChevronRight
+                                  size={12}
+                                  className={`
+                                    transition-transform duration-150 flex-shrink-0
+                                    ${isActiveLab
+                                      ? 'text-blue-500 translate-x-0.5'
+                                      : 'text-slate-300 group-hover:translate-x-0.5'
+                                    }
+                                  `}
+                                />
                                 <span>{section.name}</span>
                                 {isActiveLab && (
                                   <span className="ml-auto w-1 h-1 rounded-full bg-blue-500"></span>
@@ -338,7 +370,6 @@ export default function Layout() {
               </nav>
             </div>
 
-            {/* Footer */}
             <div className="p-5 border-t border-slate-100 bg-gradient-to-t from-slate-50/50 to-white">
               <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
@@ -351,7 +382,6 @@ export default function Layout() {
           </aside>
         )}
 
-        {/* Main content */}
         <main className="flex-1 min-w-0 overflow-y-auto relative" style={{ paddingTop: '64px' }}>
           <div className="mx-auto">
             <Outlet />
