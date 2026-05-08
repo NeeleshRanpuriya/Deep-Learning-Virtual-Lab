@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'deeplab-frontend',
       script: 'npx',
-      args: 'vite preview --port 3000 --host 0.0.0.0',
+      args: 'serve dist -p 3000 -s --no-clipboard',
       cwd: '/home/user/webapp',
       env: { NODE_ENV: 'production', PORT: 3000 },
       watch: false,
