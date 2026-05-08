@@ -7,9 +7,7 @@
 - **Design**: Clean light theme UI, animations ONLY inside canvas/visualization areas
 
 ## Live URLs
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
+- **Frontend**: https://deep-learning-virtual-lab.vercel.app/
 
 ## Features
 
