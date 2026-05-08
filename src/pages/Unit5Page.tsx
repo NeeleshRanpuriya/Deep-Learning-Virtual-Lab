@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Slider, Select, ControlSection, Button, InfoBadge, ExplanationBox } from '../components/ControlPanel'
 import GenerativeCanvas from '../labs/GenerativeCanvas'
 import LossChart from '../labs/LossChart'
@@ -16,10 +17,27 @@ const LABS: { id: Lab5; label: string }[] = [
 
 export default function Unit5Page() {
   const [activeLab, setActiveLab] = useState<Lab5>('autoencoder')
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const labParam = searchParams.get('lab')
+    if (labParam) {
+      const labMap: Record<string, Lab5> = {
+        'autoencoder': 'autoencoder',
+        'gan-trainer': 'gan',
+        'boltzmann-machine': 'boltzmann',
+        'deep-belief-network': 'dbn',
+        'deep-boltzmann-machine': 'dbm',
+      }
+      const mappedLab = labMap[labParam] as Lab5
+      if (mappedLab) setActiveLab(mappedLab)
+    }
+  }, [searchParams])
+
   return (
     <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Unit V – Generative & Unsupervised Models</h1>
+        <h1 className="text-lg font-bold text-slate-800">Chapter V – Generative & Unsupervised Models</h1>
         <p className="text-sm text-slate-500">Autoencoder · GAN · Boltzmann Machine · DBN · DBM</p>
       </div>
       <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">

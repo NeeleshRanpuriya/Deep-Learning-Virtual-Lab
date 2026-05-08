@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
+import Developer from './pages/Developer'
 import Unit1Page from './pages/Unit1Page'
 import Unit2Page from './pages/Unit2Page'
 import Unit3Page from './pages/Unit3Page'
@@ -13,11 +14,12 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="unit1" element={<Unit1Page />} />
-        <Route path="unit2" element={<Unit2Page />} />
-        <Route path="unit3" element={<Unit3Page />} />
-        <Route path="unit4" element={<Unit4Page />} />
-        <Route path="unit5" element={<Unit5Page />} />
+        <Route path="developer" element={<Developer />} />
+        <Route path="chapter1" element={<Unit1Page />} />
+        <Route path="chapter2" element={<Unit2Page />} />
+        <Route path="chapter3" element={<Unit3Page />} />
+        <Route path="chapter4" element={<Unit4Page />} />
+        <Route path="chapter5" element={<Unit5Page />} />
       </Route>
     </Routes>
   )

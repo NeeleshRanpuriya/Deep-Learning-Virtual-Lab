@@ -4,8 +4,8 @@ import { Brain, Network, Layers, Cpu, GitBranch, Zap, ArrowRight, BookOpen, Code
 
 const units = [
   {
-    path: '/unit1',
-    unit: 'Unit I',
+    path: '/chapter1',
+    unit: 'Chapter I',
     title: 'Foundations of Deep Learning',
     desc: 'Perceptron, neural network builder, activation functions, optimizers, loss curves, overfitting/underfitting.',
     icon: Network,
@@ -13,8 +13,8 @@ const units = [
     labs: ['Perceptron Visualizer', 'NN Builder', 'Activation Functions', 'Optimizer Comparison', 'Loss Curves'],
   },
   {
-    path: '/unit2',
-    unit: 'Unit II',
+    path: '/chapter2',
+    unit: 'Chapter II',
     title: 'Deep Network Architectures',
     desc: 'Network width vs depth, representation learning, Restricted Boltzmann Machines, basic autoencoders.',
     icon: Layers,
@@ -22,8 +22,8 @@ const units = [
     labs: ['Width vs Depth', 'Representation Learning', 'RBM Visualizer', 'Basic Autoencoder'],
   },
   {
-    path: '/unit3',
-    unit: 'Unit III',
+    path: '/chapter3',
+    unit: 'Chapter III',
     title: 'Convolutional Neural Networks',
     desc: 'CNN architecture blocks, filter animation, feature maps, pooling, AlexNet / ResNet / DenseNet / PixelNet.',
     icon: Cpu,
@@ -31,8 +31,8 @@ const units = [
     labs: ['CNN Visualizer', 'Filter Sliding', 'AlexNet', 'ResNet', 'DenseNet', 'PixelNet'],
   },
   {
-    path: '/unit4',
-    unit: 'Unit IV',
+    path: '/chapter4',
+    unit: 'Chapter IV',
     title: 'Recurrent Neural Networks',
     desc: 'RNN hidden states, Bidirectional RNN, Seq2Seq with attention, BPTT, LSTM gates animation.',
     icon: GitBranch,
@@ -40,8 +40,8 @@ const units = [
     labs: ['RNN Unrolled', 'Bidirectional RNN', 'Seq2Seq', 'BPTT', 'LSTM Gates'],
   },
   {
-    path: '/unit5',
-    unit: 'Unit V',
+    path: '/chapter5',
+    unit: 'Chapter V',
     title: 'Generative & Unsupervised Models',
     desc: 'Autoencoder with latent space, GAN training cycle, Boltzmann Machine, Deep Belief Network.',
     icon: Zap,
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-1.5 text-sm text-slate-500 bg-slate-50 rounded-lg px-3 py-1.5 border border-slate-200">
             <BookOpen size={14} className="text-blue-500" />
-            5 units · 20+ interactive labs
+            5 chapters · 20+ interactive labs
           </div>
         </div>
       </div>

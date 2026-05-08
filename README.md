@@ -13,7 +13,7 @@
 
 ## Features
 
-### Unit I – Foundations of Deep Learning
+### Chapter I – Foundations of Deep Learning
 - **Perceptron Lab**: Animated single neuron with weighted sum, bias, and activation visualization
 - **NN Builder**: Full neural network builder with real forward/backward propagation animations. Users can set layers, neurons, activation, optimizer, loss, learning rate, epochs, batch size.
 - **Activation Functions**: Interactive graph showing f(x) and f'(x) for ReLU, Leaky ReLU, ELU, Sigmoid, Tanh, Linear
@@ -21,26 +21,26 @@
 - **Loss Curves**: Train vs Validation loss curve visualization
 - **Overfitting/Underfitting**: Polynomial regression demo with adjustable model complexity
 
-### Unit II – Deep Network Architectures
+### Chapter II – Deep Network Architectures
 - **Width vs Depth**: Visualize how changing width/neurons vs depth/layers changes the network
 - **Representation Learning**: How deep networks transform non-linearly-separable data into separable representations
 - **RBM Visualizer**: Restricted Boltzmann Machine with Contrastive Divergence animation (positive/negative phase)
 - **Basic Autoencoder**: Layered autoencoder animation showing encode → latent → decode flow
 
-### Unit III – Convolutional Neural Networks
+### Chapter III – Convolutional Neural Networks
 - **CNN Architecture**: 3D block-diagram visualization for AlexNet, ResNet, DenseNet, PixelNet
 - **Filter Sliding**: Real animation of a convolutional filter sliding over input, generating feature map
 - **Feature Maps**: Multi-filter feature map visualization (edge, texture, color, Gabor)
 - **Parameter Sharing**: Visual comparison of CNN parameter sharing vs fully connected
 
-### Unit IV – Recurrent Neural Networks
+### Chapter IV – Recurrent Neural Networks
 - **RNN Unrolled**: Step-by-step sequence processing animation
 - **Bidirectional RNN**: Forward (→) and backward (←) pass animations
 - **Seq2Seq**: Encoder → Context Vector → Decoder animation
 - **BPTT**: Backpropagation through time gradient flow visualization
 - **LSTM Gates**: Interactive gate controls (Forget, Input, Cell, Output) with real LSTM math
 
-### Unit V – Generative & Unsupervised Models
+### Chapter V – Generative & Unsupervised Models
 - **Autoencoder**: Input → Encoder → Latent Space → Decoder → Output with scatter plot visualization
 - **GAN Trainer**: Generator vs Discriminator training cycle animation with generated samples
 - **Boltzmann Machine**: Energy landscape + Boltzmann distribution at different temperatures

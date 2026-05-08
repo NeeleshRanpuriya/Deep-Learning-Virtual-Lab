@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Slider, Select, ControlSection, Button, InfoBadge, ExplanationBox } from '../components/ControlPanel'
 import CNNCanvas from '../labs/CNNCanvas'
 import { Play, Pause, RotateCcw } from 'lucide-react'
@@ -15,10 +16,26 @@ const LABS: { id: Lab3; label: string }[] = [
 
 export default function Unit3Page() {
   const [activeLab, setActiveLab] = useState<Lab3>('cnn_arch')
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const labParam = searchParams.get('lab')
+    if (labParam) {
+      const labMap: Record<string, Lab3> = {
+        'cnn-architecture': 'cnn_arch',
+        'filter-sliding': 'filter_slide',
+        'feature-maps': 'feature_map',
+        'parameter-sharing': 'param_share',
+      }
+      const mappedLab = labMap[labParam] as Lab3
+      if (mappedLab) setActiveLab(mappedLab)
+    }
+  }, [searchParams])
+
   return (
     <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Unit III – Convolutional Neural Networks</h1>
+        <h1 className="text-lg font-bold text-slate-800">Chapter III – Convolutional Neural Networks</h1>
         <p className="text-sm text-slate-500">CNN Architectures, Filters, Feature Maps, AlexNet · ResNet · DenseNet · PixelNet</p>
       </div>
       <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">

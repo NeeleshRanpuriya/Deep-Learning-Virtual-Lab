@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Slider, Select, ControlSection, Button, InfoBadge, ExplanationBox } from '../components/ControlPanel'
 import RNNCanvas from '../labs/RNNCanvas'
 import { Play, Pause, RotateCcw } from 'lucide-react'
@@ -15,10 +16,27 @@ const LABS: { id: Lab4; label: string }[] = [
 
 export default function Unit4Page() {
   const [activeLab, setActiveLab] = useState<Lab4>('rnn')
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const labParam = searchParams.get('lab')
+    if (labParam) {
+      const labMap: Record<string, Lab4> = {
+        'rnn-unrolled': 'rnn',
+        'bidirectional-rnn': 'birnn',
+        'seq2seq': 'seq2seq',
+        'bptt': 'bptt',
+        'lstm-gates': 'lstm',
+      }
+      const mappedLab = labMap[labParam] as Lab4
+      if (mappedLab) setActiveLab(mappedLab)
+    }
+  }, [searchParams])
+
   return (
     <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Unit IV – Recurrent Neural Networks</h1>
+        <h1 className="text-lg font-bold text-slate-800">Chapter IV – Recurrent Neural Networks</h1>
         <p className="text-sm text-slate-500">RNN · Bidirectional · Seq2Seq · BPTT · LSTM Gates</p>
       </div>
       <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">

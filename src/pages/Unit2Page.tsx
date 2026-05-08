@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Slider, Select, ControlSection, Button, InfoBadge, ExplanationBox } from '../components/ControlPanel'
 import LossChart from '../labs/LossChart'
 import { Play, Pause, RotateCcw } from 'lucide-react'
@@ -14,20 +15,29 @@ const LABS: { id: Lab2; label: string }[] = [
 
 export default function Unit2Page() {
   const [activeLab, setActiveLab] = useState<Lab2>('width_depth')
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const labParam = searchParams.get('lab')
+    if (labParam) {
+      const labMap: Record<string, Lab2> = {
+        'width-vs-depth': 'width_depth',
+        'representation-learning': 'representation',
+        'rbm-visualizer': 'rbm',
+        'basic-autoencoder': 'autoencoder',
+      }
+      const mappedLab = labMap[labParam] as Lab2
+      if (mappedLab) setActiveLab(mappedLab)
+    }
+  }, [searchParams])
+
   return (
     <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Unit II – Deep Network Architectures</h1>
+        <h1 className="text-lg font-bold text-slate-800">Chapter II – Deep Network Architectures</h1>
         <p className="text-sm text-slate-500">Width vs Depth, Representation Learning, RBMs, Autoencoders</p>
       </div>
-      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">
-        {LABS.map(lab => (
-          <button key={lab.id} onClick={() => setActiveLab(lab.id)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-violet-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
-            {lab.label}
-          </button>
-        ))}
-      </div>
+      {/* Lab tabs removed; lab displayed by activeLab or URL parameter */}
       {activeLab === 'width_depth' && <WidthDepthLab />}
       {activeLab === 'representation' && <RepresentationLab />}
       {activeLab === 'rbm' && <RBMLab />}
@@ -536,8 +546,8 @@ function AutoencoderLab() {
         </ExplanationBox>
       </div>
       <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ height: 280 }}>
-          <canvas ref={canvasRef} width={600} height={280} className="w-full h-full" />
+        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ height: 400 }}>
+          <canvas ref={canvasRef} width={600} height={400} className="w-full h-full" />
         </div>
         <LossChart data={history} title="Reconstruction Loss" height={130} />
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Slider, Select, ControlSection, Button, InfoBadge, ExplanationBox } from '../components/ControlPanel'
 import NeuralNetCanvas from '../labs/NeuralNetCanvas'
 import PerceptronCanvas from '../labs/PerceptronCanvas'
@@ -24,30 +25,33 @@ const LABS = [
 
 export default function Unit1Page() {
   const [activeLab, setActiveLab] = useState<Lab>('perceptron')
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    const labParam = searchParams.get('lab')
+    if (labParam) {
+      // Map sidebar IDs to lab IDs
+      const labMap: Record<string, Lab> = {
+        'perceptron': 'perceptron',
+        'nn-builder': 'nn_builder',
+        'activations': 'activation',
+        'optimizers': 'optimizer',
+        'loss-curves': 'loss',
+        'overfitting': 'overfit',
+      }
+      const mappedLab = labMap[labParam] as Lab
+      if (mappedLab) setActiveLab(mappedLab)
+    }
+  }, [searchParams])
 
   return (
     <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Unit I – Foundations of Deep Learning</h1>
+        <h1 className="text-lg font-bold text-slate-800">Chapter I – Foundations of Deep Learning</h1>
         <p className="text-sm text-slate-500">Perceptron, Neural Networks, Activations, Optimizers, Loss Functions</p>
       </div>
 
-      {/* Lab Tabs */}
-      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">
-        {LABS.map(lab => (
-          <button
-            key={lab.id}
-            onClick={() => setActiveLab(lab.id as Lab)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-              activeLab === lab.id
-                ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-600 hover:bg-slate-100'
-            }`}
-          >
-            {lab.label}
-          </button>
-        ))}
-      </div>
+      {/* Lab content controlled by URL or defaults; tabs removed */}
 
       {activeLab === 'perceptron' && <PerceptronLab />}
       {activeLab === 'nn_builder' && <NNBuilderLab />}
