@@ -1,197 +1,120 @@
-📚 DeepLab 3D – Interactive Deep Learning Visualizer
-Home Page
+# 📚 DeepLab 3D – Interactive Deep Learning Visualizer
 
-🗂️ Table of Contents
-Overview
-Features
-Real Neural Network Logic
-Technologies Used
-How It Works
-Screenshots
-Installation and Setup
-Backend API Endpoints
-Future Enhancements
-Developer Info
-License
-Acknowledgments
-📖 Overview
-DeepLab 3D is an interactive educational platform for learning Deep Learning concepts through real canvas animations. The system provides hands-on exploration of neural networks, convolutional architectures, recurrent models, and generative systems with actual mathematical computations running in real-time.
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss)](https://tailwindcss.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python)](https://python.org/)
 
-Developed During: Interactive learning platform showcasing real neural network mathematics and visualizations.
+**DeepLab 3D** is an interactive educational platform for learning Deep Learning concepts through real-time canvas animations. The system provides hands‑on exploration of neural networks, convolutional architectures, recurrent models, and generative systems – with actual mathematical computations running in real time.
 
-Stack: React 18 + Vite + Tailwind CSS (Frontend) · Python FastAPI + NumPy (Backend)
+> 🧠 **Developed for**: Interactive learning of deep learning mathematics and visualizations  
+> 🖥️ **Stack**: React 18 + Vite + Tailwind CSS (Frontend) · Python FastAPI + NumPy (Backend)  
+> 🎨 **Design**: Clean light‑theme UI with animations focused exclusively inside canvas/visualization areas
 
-Design: Clean light theme UI with animations focused exclusively within canvas/visualization areas.
+---
 
-✨ Features
+## 🗂️ Table of Contents
 
-🧠 Chapter I – Foundations of Deep Learning
-Perceptron Lab: Animated single neuron with weighted sum, bias, and activation visualization
-NN Builder: Full neural network builder with real forward/backward propagation animations. Users can set layers, neurons, activation, optimizer, loss, learning rate, epochs, batch size.
-Activation Functions: Interactive graph showing f(x) and f'(x) for ReLU, Leaky ReLU, ELU, Sigmoid, Tanh, Linear
-Optimizer Comparison: Side-by-side SGD vs Momentum vs RMSProp vs Adam on Rosenbrock loss landscape
-Loss Curves: Train vs Validation loss curve visualization
-Overfitting/Underfitting: Polynomial regression demo with adjustable model complexity
+- [📖 Overview](#-overview)
+- [✨ Features](#-features)
+- [🧠 Real Neural Network Logic](#-real-neural-network-logic)
+- [🛠️ Technologies Used](#️-technologies-used)
+- [⚙️ How It Works](#️-how-it-works)
+- [🛠️ Installation and Setup](#️-installation-and-setup)
+- [🔌 Backend API Endpoints](#-backend-api-endpoints)
+- [🚀 Future Enhancements](#-future-enhancements)
+- [👨‍💻 Developer Info](#-developer-info)
+- [📄 License](#-license)
+- [🙏 Acknowledgments](#-acknowledgments)
 
-🏗️ Chapter II – Deep Network Architectures
-Width vs Depth: Visualize how changing width/neurons vs depth/layers changes the network
-Representation Learning: How deep networks transform non-linearly-separable data into separable representations
-RBM Visualizer: Restricted Boltzmann Machine with Contrastive Divergence animation (positive/negative phase)
-Basic Autoencoder: Layered autoencoder animation showing encode → latent → decode flow
+---
 
-🎨 Chapter III – Convolutional Neural Networks
-CNN Architecture: 3D block-diagram visualization for AlexNet, ResNet, DenseNet, PixelNet
-Filter Sliding: Real animation of a convolutional filter sliding over input, generating feature map
-Feature Maps: Multi-filter feature map visualization (edge, texture, color, Gabor)
-Parameter Sharing: Visual comparison of CNN parameter sharing vs fully connected
+## 📖 Overview
 
-🔄 Chapter IV – Recurrent Neural Networks
-RNN Unrolled: Step-by-step sequence processing animation
-Bidirectional RNN: Forward (→) and backward (←) pass animations
-Seq2Seq: Encoder → Context Vector → Decoder animation
-BPTT: Backpropagation through time gradient flow visualization
-LSTM Gates: Interactive gate controls (Forget, Input, Cell, Output) with real LSTM math
+DeepLab 3D transforms abstract deep learning concepts into interactive visual experiments. Each lab runs actual neural network mathematics (forward/backward propagation, optimizers, loss functions) and visualises them using HTML5 Canvas. The platform is structured into five chapters, covering everything from the perceptron to generative models.
 
-✨ Chapter V – Generative & Unsupervised Models
-Autoencoder: Input → Encoder → Latent Space → Decoder → Output with scatter plot visualization
-GAN Trainer: Generator vs Discriminator training cycle animation with generated samples
-Boltzmann Machine: Energy landscape + Boltzmann distribution at different temperatures
-Deep Belief Network (DBN): Greedy layer-wise pre-training visualization
-Deep Boltzmann Machine (DBM): Bidirectional connections visualization
+**Developed During:** Interactive learning platform showcasing real neural network mathematics and visualizations.
 
-💡 Real Neural Network Logic
-All neural network computations are real math (not fake UI):
-Weight initialization: He init (ReLU family), Xavier (sigmoid/tanh)
-Forward propagation: z = Wx + b, a = f(z)
-Backpropagation: Chain rule gradient computation
-Optimizers: SGD, Momentum, RMSProp, Adam (real update rules)
-Loss functions: MSE, MAE, Binary CE, Categorical CE
-Activation functions: ReLU, Leaky ReLU, ELU, Sigmoid, Tanh, Linear + derivatives
+---
 
-🛠️ Technologies Used
+## ✨ Features
 
-Programming Languages and Libraries
-Frontend:
-React 18
-Vite (build tool)
-Tailwind CSS
-React Router
-HTML5 Canvas API
-Recharts (visualization)
+### 🧠 Chapter I – Foundations of Deep Learning
+- **Perceptron Lab** – Animated single neuron with weighted sum, bias, and activation visualisation.
+- **NN Builder** – Full neural network builder with real forward/backward propagation animations. Set layers, neurons, activation, optimizer, loss, learning rate, epochs, batch size.
+- **Activation Functions** – Interactive graph showing `f(x)` and `f'(x)` for ReLU, Leaky ReLU, ELU, Sigmoid, Tanh, Linear.
+- **Optimizer Comparison** – Side‑by‑side SGD vs Momentum vs RMSProp vs Adam on the Rosenbrock loss landscape.
+- **Loss Curves** – Train vs validation loss curve visualisation.
+- **Overfitting/Underfitting** – Polynomial regression demo with adjustable model complexity.
 
-Backend & Computing:
-Python
-FastAPI (web framework)
-NumPy (numerical computations)
+### 🏗️ Chapter II – Deep Network Architectures
+- **Width vs Depth** – Visualise how changing neurons (width) vs layers (depth) changes the network.
+- **Representation Learning** – See how deep networks transform non‑linearly separable data into separable representations.
+- **RBM Visualizer** – Restricted Boltzmann Machine with Contrastive Divergence animation (positive/negative phase).
+- **Basic Autoencoder** – Layered autoencoder animation showing encode → latent → decode flow.
 
-Development & Deployment:
-PM2 (process manager)
-Vercel (frontend deployment)
+### 🎨 Chapter III – Convolutional Neural Networks
+- **CNN Architecture** – 3D block‑diagram visualisation for AlexNet, ResNet, DenseNet, PixelNet.
+- **Filter Sliding** – Real animation of a convolutional filter sliding over input, generating feature maps.
+- **Feature Maps** – Multi‑filter feature map visualisation (edge, texture, colour, Gabor).
+- **Parameter Sharing** – Visual comparison of CNN parameter sharing vs fully connected.
 
-⚙️ How It Works
+### 🔄 Chapter IV – Recurrent Neural Networks
+- **RNN Unrolled** – Step‑by‑step sequence processing animation.
+- **Bidirectional RNN** – Forward (→) and backward (←) pass animations.
+- **Seq2Seq** – Encoder → Context Vector → Decoder animation.
+- **BPTT** – Backpropagation through time gradient flow visualisation.
+- **LSTM Gates** – Interactive gate controls (Forget, Input, Cell, Output) with real LSTM math.
 
-1. Interactive Lab Selection:
-Users navigate to their desired chapter and lab.
-Clean UI presents interactive controls and parameter inputs.
+### ✨ Chapter V – Generative & Unsupervised Models
+- **Autoencoder** – Input → Encoder → Latent Space → Decoder → Output with scatter plot visualisation.
+- **GAN Trainer** – Generator vs Discriminator training cycle animation with generated samples.
+- **Boltzmann Machine** – Energy landscape + Boltzmann distribution at different temperatures.
+- **Deep Belief Network (DBN)** – Greedy layer‑wise pre‑training visualisation.
+- **Deep Boltzmann Machine (DBM)** – Bidirectional connections visualisation.
 
-2. Real-Time Computation:
-Frontend sends parameters to backend API.
-Backend performs actual neural network mathematics using NumPy.
-Results stream back to frontend for visualization.
+---
 
-3. Canvas Animation:
-HTML5 Canvas renders animations of:
-Forward/backward propagation
-Weight updates
-Feature maps
-Activation flows
+## 🧠 Real Neural Network Logic
 
-4. Educational Feedback:
-Real-time loss/accuracy tracking.
-Parameter adjustment with instant visual feedback.
-Formulas and explanations integrated into interface.
+All neural network computations are **real math**, not fake UI animations:
 
-🖼️ Screenshots
-[Screenshots section - Add images of:
-1. Home Page
-2. Perceptron Lab
-3. NN Builder
-4. Activation Functions Lab
-5. CNN Filter Visualization
-6. RNN Architecture
-7. GAN Trainer
-8. Loss Curve Visualization
-9. Feature Maps
-10. Interactive Controls]
+- **Weight initialisation** – He init (ReLU family), Xavier (sigmoid/tanh).
+- **Forward propagation** – `z = Wx + b`, `a = f(z)`.
+- **Backpropagation** – Chain rule gradient computation.
+- **Optimizers** – SGD, Momentum, RMSProp, Adam (real update rules).
+- **Loss functions** – MSE, MAE, Binary Cross‑Entropy, Categorical Cross‑Entropy.
+- **Activation functions** – ReLU, Leaky ReLU, ELU, Sigmoid, Tanh, Linear + their derivatives.
 
-🛠️ Installation and Setup
+---
 
-Clone the repository:
+## 🛠️ Technologies Used
+
+| Layer          | Technology                                                                 |
+|----------------|----------------------------------------------------------------------------|
+| **Frontend**   | React 18, Vite, Tailwind CSS, React Router                                 |
+| **Canvas**     | HTML5 Canvas API (all animations)                                          |
+| **Charts**     | Recharts                                                                   |
+| **Backend**    | Python FastAPI                                                             |
+| **NN Math**    | NumPy                                                                      |
+| **Process Mgr**| PM2                                                                        |
+| **Deployment** | Vercel (frontend)                                                          |
+
+---
+
+## ⚙️ How It Works
+
+1. **Interactive Lab Selection** – Users choose a chapter and lab; the UI presents controls and parameter inputs.
+2. **Real‑Time Computation** – The frontend sends parameters to the backend API. The backend performs actual neural network mathematics using NumPy and streams results back.
+3. **Canvas Animation** – HTML5 Canvas renders animations of forward/backward propagation, weight updates, feature maps, activation flows, etc.
+4. **Educational Feedback** – Real‑time loss/accuracy tracking, parameter adjustment with instant visual feedback, and integrated formulas/ explanations.
+
+---
+
+## 🛠️ Installation and Setup
+
+### Clone the repository
 ```bash
 git clone <repository-url>
 cd deep-learning-virtual-lab
-```
-
-Install frontend dependencies:
-```bash
-npm install
-```
-
-Install backend dependencies:
-```bash
-cd backend
-pip install -r requirements.txt
-cd ..
-```
-
-Start both services:
-```bash
-pm2 start ecosystem.config.cjs
-```
-
-Check status:
-```bash
-pm2 list
-```
-
-View logs:
-```bash
-pm2 logs deeplab-frontend --nostream
-pm2 logs deeplab-backend --nostream
-```
-
-Access the application:
-Open your browser and navigate to https://deep-learning-virtual-lab.vercel.app/
-
-Backend API Endpoints
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/health | Health check |
-| POST | /api/train | Train neural network (returns loss/acc history) |
-| POST | /api/activation | Compute activation values and derivatives |
-
-Technology Stack Summary
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, Vite, Tailwind CSS, React Router |
-| Canvas | HTML5 Canvas API (all animations) |
-| Charts | Recharts |
-| Backend | Python FastAPI |
-| NN Math | NumPy |
-| Process Manager | PM2 |
-
-🚀 Future Enhancements
-Advanced analytics for network training trends
-GPU acceleration support for backend computations
-Mobile app integration
-Interactive quiz and assessment modules
-3D visualization for deeper network layers
-Export/import trained models
-Community lab contributions feature
-Expanded activation function library
-Real dataset training integration
-
-👨‍💻 Developer Info
-Created as an interactive educational platform for deep learning concepts.
-
-For inquiries or collaborations, please reach out via the repository.

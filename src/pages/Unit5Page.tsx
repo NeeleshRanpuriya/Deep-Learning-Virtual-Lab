@@ -35,15 +35,15 @@ export default function Unit5Page() {
   }, [searchParams])
 
   return (
-    <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
+    <div className="p-2 sm:p-4 md:p-6 max-w-7xl mx-auto animate-fadeInUp bg-slate-50">
       <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Chapter V – Generative & Unsupervised Models</h1>
+        <h1 className="text-base sm:text-lg md:text-2xl font-bold text-slate-800">Chapter V – Generative & Unsupervised Models</h1>
         <p className="text-sm text-slate-500">Autoencoder · GAN · Boltzmann Machine · DBN · DBM</p>
       </div>
       <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5" style={{ display: 'none' }}>
         {LABS.map(lab => (
           <button key={lab.id} onClick={() => setActiveLab(lab.id)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
+            className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
             {lab.label}
           </button>
         ))}
@@ -157,8 +157,8 @@ function AutoencoderLab() {
   }, [animating])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Config">
           <Slider label="Latent Dimensions" value={latentDim} min={1} max={8}
             onChange={v => { setLatentDim(v); setEpoch(0); setHistory([]) }} />
@@ -180,16 +180,16 @@ function AutoencoderLab() {
           The latent space clusters similar inputs together. As training progresses, clusters become more distinct.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 space-y-3">
+        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
           <p className="text-xs text-slate-400 font-medium mb-2">Autoencoder – Input → Encoder → Latent → Decoder → Output</p>
           <GenerativeCanvas mode="autoencoder" animating={animating} epoch={epoch} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-            <canvas ref={canvasRef} width={280} height={180} className="w-full h-full" />
+            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" />
           </div>
-          <LossChart data={history} title="Reconstruction Loss" height={140} />
+          <LossChart data={history} title="Reconstruction Loss" height={240} />
         </div>
       </div>
     </div>
@@ -287,8 +287,8 @@ function GANLab() {
   }, [animating])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="GAN Config">
           <Slider label="Learning Rate" value={lr} min={0.00005} max={0.001} step={0.00005} onChange={setLr} />
         </ControlSection>
@@ -313,16 +313,16 @@ function GANLab() {
           G Loss = -log(D(G(z)))
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 space-y-3">
+        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
           <p className="text-xs text-slate-400 font-medium mb-2">GAN Training – Generator vs Discriminator</p>
           <GenerativeCanvas mode="gan" animating={animating} epoch={epoch} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-            <canvas ref={canvasRef} width={280} height={180} className="w-full h-full" />
+            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" />
           </div>
-          <LossChart data={history} title="G Loss vs D Loss" height={140} />
+          <LossChart data={history} title="G Loss vs D Loss" height={240} />
         </div>
       </div>
     </div>
@@ -428,8 +428,8 @@ function BoltzmannLab() {
   }, [animating, temp])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="BM Config">
           <Slider label="Temperature (T)" value={temp} min={0.1} max={5} step={0.1} onChange={setTemp} />
         </ControlSection>
@@ -444,13 +444,13 @@ function BoltzmannLab() {
           Training: Minimize difference between data and model distributions.
         </ExplanationBox>
         <div className="mt-3">
-          <div className="bg-slate-900 rounded-xl overflow-hidden">
+          <div className="bg-slate-900 rounded-xl overflow-hidden h-60">
             <GenerativeCanvas mode="boltzmann" animating={animating} />
           </div>
         </div>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 360 }}>
-        <canvas ref={canvasRef} width={580} height={360} className="w-full h-full" />
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
       </div>
     </div>
   )
@@ -465,8 +465,8 @@ function DBNLab() {
   const [greedyLayer, setGreedyLayer] = useState(1)
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="DBN Config">
           <Slider label="Number of RBM Layers" value={numLayers} min={2} max={4} onChange={setNumLayers} />
           <Slider label="Greedy Pre-train Layer" value={greedyLayer} min={1} max={numLayers}
@@ -485,7 +485,7 @@ function DBNLab() {
           <strong>Fine-tuning:</strong> Wake-sleep algorithm on full network.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
         <p className="text-xs text-slate-400 font-medium mb-2">DBN – Greedy Layer-wise Pre-training</p>
         <GenerativeCanvas mode="dbn" animating={animating} epoch={greedyLayer} />
         <div className="mt-2 flex gap-2">
@@ -510,8 +510,8 @@ function DBMLab() {
   const [numLayers, setNumLayers] = useState(3)
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="DBM Config">
           <Slider label="Hidden Layers" value={numLayers} min={2} max={4} onChange={setNumLayers} />
         </ControlSection>
@@ -532,7 +532,7 @@ function DBMLab() {
           <p>• DBM better at multi-modal distributions</p>
         </div>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
         <p className="text-xs text-slate-400 font-medium mb-2">DBM – Bidirectional Connections All Layers</p>
         <GenerativeCanvas mode="dbm" animating={animating} epoch={numLayers} />
         <div className="mt-3 bg-slate-800 rounded-lg p-3 text-xs text-slate-400">

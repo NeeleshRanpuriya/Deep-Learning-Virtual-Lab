@@ -85,7 +85,7 @@ function RNNLab() {
       </div>
       <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">RNN – Unrolled Through Time</p>
-        <RNNCanvas mode="rnn" steps={steps} animating={animating} height={240} />
+        <RNNCanvas mode="rnn" steps={steps} animating={animating} />
       </div>
     </div>
   )
@@ -117,7 +117,7 @@ function BiRNNLab() {
       </div>
       <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">Bidirectional RNN – Both Directions</p>
-        <RNNCanvas mode="birnn" steps={steps} animating={animating} height={240} />
+        <RNNCanvas mode="birnn" steps={steps} animating={animating} />
       </div>
     </div>
   )
@@ -149,7 +149,7 @@ function Seq2SeqLab() {
       </div>
       <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">Seq2Seq – Encoder → Context → Decoder</p>
-        <RNNCanvas mode="seq2seq" steps={3} animating={animating} height={240} />
+        <RNNCanvas mode="seq2seq" steps={3} animating={animating} />
       </div>
     </div>
   )
@@ -185,7 +185,7 @@ function BPTTLab() {
       </div>
       <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">BPTT – Gradient Flow Backward Through Time</p>
-        <RNNCanvas mode="bptt" steps={steps} animating={animating} height={240} />
+        <RNNCanvas mode="bptt" steps={steps} animating={animating} />
       </div>
     </div>
   )
@@ -234,9 +234,10 @@ function LSTMLab() {
       <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">LSTM – Gate Mechanics (use sliders to control)</p>
         <RNNCanvas
-          mode="lstm" steps={1} animating={animating}
+          mode="lstm"
+          steps={1}
+          animating={animating}
           lstmGates={{ forget: forgetGate, input: inputGate, cell: cellUpdate, output: outputGate }}
-          height={240}
         />
         {/* Gate meaning guide */}
         <div className="mt-3 grid grid-cols-4 gap-2">
