@@ -2,22 +2,6 @@
 
 ---
 
-## 🗂️ Table of Contents
-
-- [📖 Overview](#-overview)
-- [✨ Features](#-features)
-- [🧠 Real Neural Network Logic](#-real-neural-network-logic)
-- [🛠️ Technologies Used](#️-technologies-used)
-- [⚙️ How It Works](#️-how-it-works)
-- [🛠️ Installation and Setup](#️-installation-and-setup)
-- [🔌 Backend API Endpoints](#-backend-api-endpoints)
-- [🚀 Future Enhancements](#-future-enhancements)
-- [👨‍💻 Developer Info](#-developer-info)
-- [📄 License](#-license)
-- [🙏 Acknowledgments](#-acknowledgments)
-
----
-
 ## 📖 Overview
 
 DeepLab 3D transforms abstract deep learning concepts into interactive visual experiments. Each lab runs actual neural network mathematics (forward/backward propagation, optimizers, loss functions) and visualises them using HTML5 Canvas. The platform is structured into five chapters, covering everything from the perceptron to generative models.
@@ -99,3 +83,14 @@ All neural network computations are **real math**, not fake UI animations:
 4. **Educational Feedback** – Real‑time loss/accuracy tracking, parameter adjustment with instant visual feedback, and integrated formulas/ explanations.
 
 ---
+
+## 👨‍💻 Developer Info
+
+Created by **Neelesh Ranpuriya**
+
+- 📧 Gmail: [neeleshranpuriya@gmail.com](mailto:neeleshranpuriya@gmail.com)
+- 🌐 Portfolio: [https://neelesh-ranpuriya.vercel.app/](https://neelesh-ranpuriya.vercel.app/)
+- 🐙 GitHub: [https://github.com/NeeleshRanpuriya](https://github.com/NeeleshRanpuriya)
+- 🔗 LinkedIn: [https://www.linkedin.com/in/neelesh-ranpuriya-0920512b2/](https://www.linkedin.com/in/neelesh-ranpuriya-0920512b2/)
+
+For inquiries or collaborations, feel free to reach out.
