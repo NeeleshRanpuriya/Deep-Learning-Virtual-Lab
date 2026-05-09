@@ -81,8 +81,7 @@ export default function Home() {
         </div>
         <p className="text-slate-600 text-base leading-relaxed max-w-2xl">
           An interactive educational platform where you can build, train, and visualize real neural networks — 
-          from basic perceptrons to GANs and LSTMs. All computations run locally using JavaScript-based 
-          neural network math. No external APIs or paid services.
+          from basic perceptrons to GANs and LSTMs. 
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <div className="flex items-center gap-1.5 text-sm text-slate-500 bg-slate-50 rounded-lg px-3 py-1.5 border border-slate-200">
