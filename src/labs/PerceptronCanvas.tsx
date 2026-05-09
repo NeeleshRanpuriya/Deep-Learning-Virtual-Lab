@@ -25,7 +25,7 @@ export default function PerceptronCanvas({ inputs, weights, bias, activation, ou
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'
+      ctx.fillStyle = '#000000'
       ctx.fillRect(0, 0, W, H)
 
       const inputX = 80
@@ -187,7 +187,7 @@ export default function PerceptronCanvas({ inputs, weights, bias, activation, ou
       width={560}
       height={320}
       className="w-full h-full"
-      style={{ imageRendering: 'crisp-edges' }}
+      style={{ imageRendering: 'crisp-edges', backgroundColor: '#000' }}
     />
   )
 }

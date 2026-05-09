@@ -83,8 +83,8 @@ function RNNLab() {
           Orange arrows = output at each step.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
-        <p className="text-xs text-slate-400 font-medium mb-2">RNN – Unrolled Through Time</p>
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3">
+        <p className="text-xs text-slate-300 font-medium mb-2">RNN – Unrolled Through Time</p>
         <RNNCanvas mode="rnn" steps={steps} animating={animating} />
       </div>
     </div>
@@ -115,8 +115,8 @@ function BiRNNLab() {
           Useful for NLP tasks needing full context.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
-        <p className="text-xs text-slate-400 font-medium mb-2">Bidirectional RNN – Both Directions</p>
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3">
+        <p className="text-xs text-slate-300 font-medium mb-2">Bidirectional RNN – Both Directions</p>
         <RNNCanvas mode="birnn" steps={steps} animating={animating} />
       </div>
     </div>
@@ -147,8 +147,8 @@ function Seq2SeqLab() {
           <div className="flex items-center gap-2"><span className="w-3 h-2 rounded bg-orange-500 inline-block"></span><span>Decoder hidden states</span></div>
         </div>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
-        <p className="text-xs text-slate-400 font-medium mb-2">Seq2Seq – Encoder → Context → Decoder</p>
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3">
+        <p className="text-xs text-slate-300 font-medium mb-2">Seq2Seq – Encoder → Context → Decoder</p>
         <RNNCanvas mode="seq2seq" steps={3} animating={animating} />
       </div>
     </div>
@@ -183,8 +183,8 @@ function BPTTLab() {
           <strong>Truncated BPTT:</strong> Only backpropagate k steps instead of full T.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
-        <p className="text-xs text-slate-400 font-medium mb-2">BPTT – Gradient Flow Backward Through Time</p>
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3">
+        <p className="text-xs text-slate-300 font-medium mb-2">BPTT – Gradient Flow Backward Through Time</p>
         <RNNCanvas mode="bptt" steps={steps} animating={animating} />
       </div>
     </div>
@@ -231,8 +231,8 @@ function LSTMLab() {
           <code>hₜ = o·tanh(Cₜ)</code> – Hidden
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
-        <p className="text-xs text-slate-400 font-medium mb-2">LSTM – Gate Mechanics (use sliders to control)</p>
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3">
+        <p className="text-xs text-slate-300 font-medium mb-2">LSTM – Gate Mechanics (use sliders to control)</p>
         <RNNCanvas
           mode="lstm"
           steps={1}

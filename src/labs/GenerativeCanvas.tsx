@@ -263,7 +263,7 @@ export default function GenerativeCanvas({ mode, animating, epoch = 0 }: Generat
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.016
 
       switch (mode) {
@@ -283,6 +283,6 @@ export default function GenerativeCanvas({ mode, animating, epoch = 0 }: Generat
 
   return (
     <canvas ref={canvasRef} width={680} height={260} className="w-full rounded-lg"
-      style={{ imageRendering: 'crisp-edges' }} />
+      style={{ imageRendering: 'crisp-edges', backgroundColor: '#000' }} />
   )
 }

@@ -115,7 +115,7 @@ function PerceptronLab() {
           Adjust weights and inputs to see how the signal flows through a single neuron.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240, height: 'auto' }}>
+      <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240, height: '500px' }}>
         <PerceptronCanvas inputs={inputs} weights={weights} bias={bias}
           activation={activation} output={output} animating={animating} />
       </div>
@@ -191,11 +191,15 @@ function NNBuilderLab() {
         setSignalPhase('idle')
         return
       }
-      const { layers: ls, opt, cfg } = netRef.current
+      const cur = netRef.current
+      if (!cur) {
+        setTraining(false)
+        setSignalPhase('idle')
+        return
+      }
+      const { layers: ls, opt, cfg } = cur
       const n = data.length
       let totalLoss = 0, correct = 0
-
-      // Mini-batch
       for (let b = 0; b < batchSize; b++) {
         const idx = Math.floor(Math.random() * n)
         const pred = forwardPass(data[idx], ls, cfg)
@@ -301,7 +305,7 @@ function NNBuilderLab() {
 
       {/* Canvas */}
       <div className="md:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ height: 240 }}>
+        <div className="bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ height: 300 }}>
           <div className="flex items-center gap-2 px-3 pt-2 pb-1">
             <span className="text-xs text-slate-400 font-mono truncate">Architecture: [{layerSizes.join(' → ')}]</span>
             {signalPhase !== 'idle' && (
@@ -359,7 +363,7 @@ function ActivationLab() {
           <span className="text-xs">{descriptions[selected]}</span>
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 p-3 sm:p-4">
+      <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 p-3 sm:p-4">
         <p className="text-xs text-slate-400 mb-3 font-medium">Activation Function + Derivative</p>
         <ActivationChart fn={selected} width={Math.min(560, window.innerWidth - 40)} height={240} />
         <div className="mt-3 flex gap-3 text-xs">
@@ -562,8 +566,8 @@ function OptimizerLab() {
           Global minimum at (1,1). Each optimizer takes a different path to reach it.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
-        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
+        <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 350 }}>
+        <canvas ref={canvasRef} width={580} height={350} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )
@@ -618,7 +622,7 @@ function LossCurveLab() {
         </ExplanationBox>
       </div>
       <div className="md:col-span-2">
-        <LossChart data={history} title="Loss Curves (Train vs Val)" height={280} />
+        <LossChart data={history} title="Loss Curves (Train vs Val)" height={400} />
       </div>
     </div>
   )
@@ -652,7 +656,7 @@ function OverfitLab() {
     const ctx = canvas.getContext('2d')!
     const W = canvas.width, H = canvas.height
     ctx.clearRect(0, 0, W, H)
-    ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
 
     const xMin = -Math.PI, xMax = Math.PI, yMin = -3, yMax = 3
     const toC = (wx: number, wy: number) => ({
@@ -745,8 +749,8 @@ function OverfitLab() {
           Goal: find the sweet spot.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
-        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
+      <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )

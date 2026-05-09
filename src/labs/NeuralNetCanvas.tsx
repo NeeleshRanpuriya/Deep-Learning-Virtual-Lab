@@ -11,7 +11,7 @@ interface NNCanvasProps {
 }
 
 const COLORS = {
-  bg: '#0f172a',
+  bg: '#000000',
   neuronDefault: '#1e3a5f',
   neuronActive: '#3b82f6',
   neuronGlow: '#60a5fa',
@@ -288,7 +288,7 @@ export default function NeuralNetCanvas({
       className="w-full h-full"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => onNeuronHover(null)}
-      style={{ imageRendering: 'crisp-edges' }}
+      style={{ imageRendering: 'crisp-edges', backgroundColor: '#000' }}
     />
   )
 }

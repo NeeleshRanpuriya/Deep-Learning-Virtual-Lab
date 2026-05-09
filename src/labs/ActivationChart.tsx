@@ -16,7 +16,7 @@ export default function ActivationChart({ fn, width = 280, height = 160 }: Activ
     const ctx = canvas.getContext('2d')!
     const W = canvas.width, H = canvas.height
     ctx.clearRect(0, 0, W, H)
-    ctx.fillStyle = '#0f172a'
+    ctx.fillStyle = '#000000'
     ctx.fillRect(0, 0, W, H)
 
     const xMin = -4, xMax = 4
@@ -82,7 +82,7 @@ export default function ActivationChart({ fn, width = 280, height = 160 }: Activ
       width={width}
       height={height}
       className="w-full rounded-lg"
-      style={{ imageRendering: 'crisp-edges' }}
+      style={{ imageRendering: 'crisp-edges', backgroundColor: '#000' }}
     />
   )
 }

@@ -9,8 +9,8 @@ interface LossChartProps {
 
 export default function LossChart({ data, title = 'Training Progress', height = 180 }: LossChartProps) {
   return (
-    <div className="bg-slate-900 rounded-xl p-3">
-      <p className="text-xs text-slate-400 font-medium mb-2">{title}</p>
+    <div className="bg-black rounded-xl p-3">
+      <p className="text-xs text-slate-300 font-medium mb-2">{title}</p>
       {data.length === 0 ? (
         <div className="flex items-center justify-center text-slate-600 text-xs" style={{ height }}>
           Training not started
@@ -18,7 +18,7 @@ export default function LossChart({ data, title = 'Training Progress', height = 
       ) : (
         <ResponsiveContainer width="100%" height={height}>
           <LineChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: -10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#0b1220" />
             <XAxis
               dataKey="epoch"
               tick={{ fill: '#64748b', fontSize: 10 }}
@@ -26,7 +26,7 @@ export default function LossChart({ data, title = 'Training Progress', height = 
             />
             <YAxis tick={{ fill: '#64748b', fontSize: 10 }} width={40} />
             <Tooltip
-              contentStyle={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 8, fontSize: 11 }}
+              contentStyle={{ background: '#000', border: '1px solid #111827', borderRadius: 8, fontSize: 11 }}
               labelStyle={{ color: '#94a3b8' }}
               itemStyle={{ color: '#e2e8f0' }}
             />

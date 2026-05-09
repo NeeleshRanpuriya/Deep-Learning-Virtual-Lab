@@ -79,7 +79,7 @@ function AutoencoderLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.015
 
       const t = tRef.current
@@ -181,13 +181,13 @@ function AutoencoderLab() {
         </ExplanationBox>
       </div>
       <div className="md:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
+        <div className="bg-black rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
           <p className="text-xs text-slate-400 font-medium mb-2">Autoencoder – Input → Encoder → Latent → Decoder → Output</p>
           <GenerativeCanvas mode="autoencoder" animating={animating} epoch={epoch} />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" />
+          <div className="bg-black rounded-xl border border-slate-700 overflow-hidden">
+            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" style={{ backgroundColor: '#000' }} />
           </div>
           <LossChart data={history} title="Reconstruction Loss" height={240} />
         </div>
@@ -220,7 +220,7 @@ function GANLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const t = tRef.current
@@ -314,13 +314,13 @@ function GANLab() {
         </ExplanationBox>
       </div>
       <div className="md:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
+        <div className="bg-black rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
           <p className="text-xs text-slate-400 font-medium mb-2">GAN Training – Generator vs Discriminator</p>
           <GenerativeCanvas mode="gan" animating={animating} epoch={epoch} />
         </div>
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" />
+          <div className="bg-black rounded-xl border border-slate-700 overflow-hidden">
+            <canvas ref={canvasRef} width={280} height={240} className="w-full h-full" style={{ backgroundColor: '#000' }} />
           </div>
           <LossChart data={history} title="G Loss vs D Loss" height={240} />
         </div>
@@ -348,7 +348,7 @@ function BoltzmannLab() {
     // Energy landscape + Boltzmann distribution
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const t = tRef.current
@@ -444,13 +444,13 @@ function BoltzmannLab() {
           Training: Minimize difference between data and model distributions.
         </ExplanationBox>
         <div className="mt-3">
-          <div className="bg-slate-900 rounded-xl overflow-hidden h-60">
+          <div className="bg-black rounded-xl overflow-hidden h-40">
             <GenerativeCanvas mode="boltzmann" animating={animating} />
           </div>
         </div>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
-        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 300 }}>
+        <canvas ref={canvasRef} width={580} height={300} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )
@@ -485,14 +485,14 @@ function DBNLab() {
           <strong>Fine-tuning:</strong> Wake-sleep algorithm on full network.
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3" style={{ minHeight: 350 }}>
         <p className="text-xs text-slate-400 font-medium mb-2">DBN – Greedy Layer-wise Pre-training</p>
         <GenerativeCanvas mode="dbn" animating={animating} epoch={greedyLayer} />
         <div className="mt-2 flex gap-2">
           {Array.from({ length: numLayers }, (_, i) => (
             <button key={i}
               onClick={() => setGreedyLayer(i + 1)}
-              className={`flex-1 text-xs py-1 rounded-lg transition-colors ${greedyLayer === i + 1 ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>
+              className={`flex-1 text-xs py-1 rounded-lg transition-colors ${greedyLayer === i + 1 ? 'bg-violet-600 text-white' : 'bg-black text-slate-400 hover:bg-slate-900'}`}>
               RBM Layer {i + 1}
             </button>
           ))}
@@ -532,10 +532,10 @@ function DBMLab() {
           <p>• DBM better at multi-modal distributions</p>
         </div>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3 h-60">
+      <div className="md:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden p-3" style={{ minHeight: 350 }}>
         <p className="text-xs text-slate-400 font-medium mb-2">DBM – Bidirectional Connections All Layers</p>
         <GenerativeCanvas mode="dbm" animating={animating} epoch={numLayers} />
-        <div className="mt-3 bg-slate-800 rounded-lg p-3 text-xs text-slate-400">
+        <div className="mt-3 bg-black rounded-lg p-3 text-xs text-slate-400">
           <strong className="text-slate-300">Mean-Field Variational Inference:</strong><br />
           μᵢ ← σ(∑ⱼ Wᵢⱼμⱼ) iterating until convergence.<br />
           Bidirectional arrows (⇅) indicate symmetric weight matrices Wᵢⱼ = Wⱼᵢᵀ.

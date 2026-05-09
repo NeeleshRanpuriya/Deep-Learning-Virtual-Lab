@@ -66,7 +66,7 @@ function WidthDepthLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const totalLayers = depth + 2
@@ -161,7 +161,7 @@ function WidthDepthLab() {
           Deep + narrow ≠ Wide + shallow in terms of what they learn.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 380 }}>
+      <div className="lg:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 380 }}>
         <canvas ref={canvasRef} width={580} height={380} className="w-full h-full" />
       </div>
     </div>
@@ -194,7 +194,7 @@ function RepresentationLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.015
 
       const t = tRef.current
@@ -270,7 +270,7 @@ function RepresentationLab() {
           Concentric circles (not linearly separable in raw space) become separable in learned representation space.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
+      <div className="lg:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden">
         <canvas ref={canvasRef} width={580} height={380} className="w-full h-full" />
       </div>
     </div>
@@ -297,7 +297,7 @@ function RBMLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const t = tRef.current
@@ -406,7 +406,7 @@ function RBMLab() {
           No connections within same layer!
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
+      <div className="lg:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden">
         <canvas ref={canvasRef} width={560} height={360} className="w-full h-full" />
       </div>
     </div>
@@ -434,7 +434,7 @@ function AutoencoderLab() {
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const t = tRef.current
@@ -546,7 +546,7 @@ function AutoencoderLab() {
         </ExplanationBox>
       </div>
       <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ height: 400 }}>
+        <div className="bg-black rounded-xl border border-slate-700 overflow-hidden" style={{ height: 400 }}>
           <canvas ref={canvasRef} width={600} height={400} className="w-full h-full" />
         </div>
         <LossChart data={history} title="Reconstruction Loss" height={130} />

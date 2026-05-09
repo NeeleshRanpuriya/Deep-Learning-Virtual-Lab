@@ -96,8 +96,8 @@ function CNNArchLab() {
         <ExplanationBox>{modelInfo[model].desc}</ExplanationBox>
       </div>
       <div className="md:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 p-3 overflow-hidden" style={{ minHeight: 240 }}>
-          <p className="text-xs text-slate-400 font-medium mb-2">{model.toUpperCase()} – Architecture Blocks</p>
+        <div className="bg-black rounded-lg sm:rounded-xl border border-slate-700 p-3 overflow-hidden" style={{ minHeight: 240 }}>
+          <p className="text-xs text-slate-300 font-medium mb-2">{model.toUpperCase()} – Architecture Blocks</p>
           <CNNCanvas model={model} animating={animating} />
         </div>
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
@@ -166,8 +166,8 @@ function FilterSlideLab() {
     const outputMap = Array.from({ length: outSize }, () => Array(outSize).fill(0))
 
     function draw() {
-      ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+    ctx.clearRect(0, 0, W, H)
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.03
 
       const totalPos = outSize * outSize
@@ -296,8 +296,8 @@ function FilterSlideLab() {
           </ExplanationBox>
         </div>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 360 }}>
-        <canvas ref={canvasRef} width={600} height={360} className="w-full h-full" />
+      <div className="lg:col-span-2 bg-black rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 360 }}>
+        <canvas ref={canvasRef} width={600} height={360} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )
@@ -333,8 +333,8 @@ function FeatureMapLab() {
     }
 
     function draw() {
-      ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+    ctx.clearRect(0, 0, W, H)
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
 
       const t = tRef.current
@@ -406,8 +406,8 @@ function FeatureMapLab() {
           Early layers detect low-level features (edges). Deeper layers detect complex patterns (eyes, wheels, etc.).
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
-        <canvas ref={canvasRef} width={600} height={240} className="w-full h-full" />
+      <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={600} height={240} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )
@@ -430,8 +430,8 @@ function ParamShareLab() {
     const W = canvas.width, H = canvas.height
 
     function draw() {
-      ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+    ctx.clearRect(0, 0, W, H)
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H)
       if (animating) tRef.current += 0.02
       const t = tRef.current
 
@@ -566,8 +566,8 @@ function ParamShareLab() {
           This is why CNNs are so efficient!
         </ExplanationBox>
       </div>
-      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
-        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
+      <div className="md:col-span-2 bg-black rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" style={{ backgroundColor: '#000' }} />
       </div>
     </div>
   )

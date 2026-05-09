@@ -172,7 +172,7 @@ export default function CNNCanvas({ model, animating, filterSize = 3 }: CNNCanva
 
     function draw() {
       ctx.clearRect(0, 0, W, H)
-      ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+      ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H)
 
       const totalBlocks = blocks.length
       const activeIdx = animating ? Math.floor(tRef.current * totalBlocks * 0.3) % totalBlocks : -1
@@ -212,7 +212,7 @@ export default function CNNCanvas({ model, animating, filterSize = 3 }: CNNCanva
       width={680}
       height={220}
       className="w-full rounded-lg"
-      style={{ imageRendering: 'crisp-edges' }}
+      style={{ imageRendering: 'crisp-edges', backgroundColor: '#000' }}
     />
   )
 }
