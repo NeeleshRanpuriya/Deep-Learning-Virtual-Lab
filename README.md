@@ -1,17 +1,5 @@
 # 📚 DeepLab 3D – Interactive Deep Learning Visualizer
 
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss)](https://tailwindcss.com/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python)](https://python.org/)
-
-**DeepLab 3D** is an interactive educational platform for learning Deep Learning concepts through real-time canvas animations. The system provides hands‑on exploration of neural networks, convolutional architectures, recurrent models, and generative systems – with actual mathematical computations running in real time.
-
-> 🧠 **Developed for**: Interactive learning of deep learning mathematics and visualizations  
-> 🖥️ **Stack**: React 18 + Vite + Tailwind CSS (Frontend) · Python FastAPI + NumPy (Backend)  
-> 🎨 **Design**: Clean light‑theme UI with animations focused exclusively inside canvas/visualization areas
-
 ---
 
 ## 🗂️ Table of Contents
@@ -111,10 +99,3 @@ All neural network computations are **real math**, not fake UI animations:
 4. **Educational Feedback** – Real‑time loss/accuracy tracking, parameter adjustment with instant visual feedback, and integrated formulas/ explanations.
 
 ---
-
-## 🛠️ Installation and Setup
-
-### Clone the repository
-```bash
-git clone <repository-url>
-cd deep-learning-virtual-lab
