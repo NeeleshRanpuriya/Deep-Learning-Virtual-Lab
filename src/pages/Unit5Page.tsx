@@ -40,7 +40,7 @@ export default function Unit5Page() {
         <h1 className="text-lg font-bold text-slate-800">Chapter V – Generative & Unsupervised Models</h1>
         <p className="text-sm text-slate-500">Autoencoder · GAN · Boltzmann Machine · DBN · DBM</p>
       </div>
-      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">
+      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5" style={{ display: 'none' }}>
         {LABS.map(lab => (
           <button key={lab.id} onClick={() => setActiveLab(lab.id)}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-rose-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>

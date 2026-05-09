@@ -33,12 +33,14 @@ export default function Unit3Page() {
   }, [searchParams])
 
   return (
-    <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
-      <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Chapter III – Convolutional Neural Networks</h1>
-        <p className="text-sm text-slate-500">CNN Architectures, Filters, Feature Maps, AlexNet · ResNet · DenseNet · PixelNet</p>
+    <div className="min-h-screen bg-slate-50 p-2 sm:p-4 md:p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-3 sm:mb-4 md:mb-6">
+          <h1 className="text-base sm:text-lg md:text-2xl font-bold text-slate-800">Chapter III – Convolutional Neural Networks</h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">CNN Architectures, Filters, Feature Maps, AlexNet · ResNet · DenseNet · PixelNet</p>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">
+      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5" style={{ display: 'none' }}>
         {LABS.map(lab => (
           <button key={lab.id} onClick={() => setActiveLab(lab.id)}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
@@ -69,12 +71,12 @@ function CNNArchLab() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Select Model">
           {(['alexnet','resnet','densenet','pixelnet'] as CNNModel[]).map(m => (
             <button key={m} onClick={() => setModel(m)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm mb-1.5 transition-colors font-medium ${model === m ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
+              className={`w-full text-left px-3 py-2 rounded-lg text-xs sm:text-sm mb-1.5 transition-colors font-medium ${model === m ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
               {m.charAt(0).toUpperCase() + m.slice(1)}
               <span className={`text-xs ml-2 ${model === m ? 'text-emerald-200' : 'text-slate-400'}`}>{modelInfo[m].year}</span>
             </button>
@@ -88,13 +90,13 @@ function CNNArchLab() {
           <div className="text-xs font-semibold text-emerald-600 mb-1">Key Innovation:</div>
           <div className="text-xs text-slate-500">{modelInfo[model].innovation}</div>
         </div>
-        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3">
+        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3 text-sm">
           {animating ? <><Pause size={14} className="inline mr-1"/>Pause</> : <><Play size={14} className="inline mr-1"/>Animate</>}
         </Button>
         <ExplanationBox>{modelInfo[model].desc}</ExplanationBox>
       </div>
-      <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 p-3 overflow-hidden">
+      <div className="md:col-span-2 space-y-3">
+        <div className="bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 p-3 overflow-hidden" style={{ minHeight: 240 }}>
           <p className="text-xs text-slate-400 font-medium mb-2">{model.toUpperCase()} – Architecture Blocks</p>
           <CNNCanvas model={model} animating={animating} />
         </div>
@@ -273,8 +275,8 @@ function FilterSlideLab() {
   }, [filterSize, stride, padding, animating])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Convolution Config">
           <Select label="Filter Size" value={String(filterSize)}
             options={[{value:'2',label:'2×2'},{value:'3',label:'3×3'},{value:'5',label:'5×5'}]}
@@ -388,15 +390,15 @@ function FeatureMapLab() {
   }, [numFilters, filterType, animating])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Feature Map Config">
           <Slider label="Number of Filters" value={numFilters} min={1} max={16} onChange={setNumFilters} />
           <Select label="Filter Type" value={filterType}
             options={[{value:'edge',label:'Edge Detection'},{value:'texture',label:'Texture'},{value:'color',label:'Color Response'},{value:'gabor',label:'Gabor Filter'}]}
             onChange={setFilterType} />
         </ControlSection>
-        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3">
+        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mt-2 text-sm">
           {animating ? 'Pause' : 'Animate'}
         </Button>
         <ExplanationBox>
@@ -404,8 +406,8 @@ function FeatureMapLab() {
           Early layers detect low-level features (edges). Deeper layers detect complex patterns (eyes, wheels, etc.).
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 360 }}>
-        <canvas ref={canvasRef} width={580} height={360} className="w-full h-full" />
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={600} height={240} className="w-full h-full" />
       </div>
     </div>
   )
@@ -542,19 +544,19 @@ function ParamShareLab() {
   }, [mode, animating])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Mode">
           <button onClick={() => setMode('cnn')}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm mb-1.5 font-medium transition-colors ${mode==='cnn' ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
+            className={`w-full text-left px-3 py-2 rounded-lg text-xs sm:text-sm mb-1.5 font-medium transition-colors ${mode==='cnn' ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
             CNN (Parameter Sharing)
           </button>
           <button onClick={() => setMode('fc')}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${mode==='fc' ? 'bg-red-500 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
+            className={`w-full text-left px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${mode==='fc' ? 'bg-red-500 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}>
             Fully Connected (No Sharing)
           </button>
         </ControlSection>
-        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3">
+        <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3 text-sm">
           {animating ? 'Pause' : 'Animate'}
         </Button>
         <ExplanationBox>
@@ -564,8 +566,8 @@ function ParamShareLab() {
           This is why CNNs are so efficient!
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 360 }}>
-        <canvas ref={canvasRef} width={580} height={360} className="w-full h-full" />
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
       </div>
     </div>
   )

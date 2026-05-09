@@ -34,15 +34,17 @@ export default function Unit4Page() {
   }, [searchParams])
 
   return (
-    <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
-      <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Chapter IV – Recurrent Neural Networks</h1>
-        <p className="text-sm text-slate-500">RNN · Bidirectional · Seq2Seq · BPTT · LSTM Gates</p>
+    <div className="min-h-screen bg-slate-50 p-2 sm:p-4 md:p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-3 sm:mb-4 md:mb-6">
+          <h1 className="text-base sm:text-lg md:text-2xl font-bold text-slate-800">Chapter IV – Recurrent Neural Networks</h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">RNN · Bidirectional · Seq2Seq · BPTT · LSTM Gates</p>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5">
+      <div className="flex flex-wrap gap-1.5 mb-5 bg-white border border-slate-200 rounded-xl p-1.5" style={{ display: 'none' }}>
         {LABS.map(lab => (
           <button key={lab.id} onClick={() => setActiveLab(lab.id)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-orange-500 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
+            className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${activeLab === lab.id ? 'bg-orange-500 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-100'}`}>
             {lab.label}
           </button>
         ))}
@@ -63,8 +65,8 @@ function RNNLab() {
   const [steps, setSteps] = useState(5)
   const [animating, setAnimating] = useState(false)
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="RNN Config">
           <Slider label="Sequence Length (T)" value={steps} min={2} max={6} onChange={setSteps} />
         </ControlSection>
@@ -81,9 +83,9 @@ function RNNLab() {
           Orange arrows = output at each step.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">RNN – Unrolled Through Time</p>
-        <RNNCanvas mode="rnn" steps={steps} animating={animating} />
+        <RNNCanvas mode="rnn" steps={steps} animating={animating} height={240} />
       </div>
     </div>
   )
@@ -96,8 +98,8 @@ function BiRNNLab() {
   const [steps, setSteps] = useState(5)
   const [animating, setAnimating] = useState(false)
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="BiRNN Config">
           <Slider label="Sequence Length" value={steps} min={3} max={6} onChange={setSteps} />
         </ControlSection>
@@ -113,9 +115,9 @@ function BiRNNLab() {
           Useful for NLP tasks needing full context.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">Bidirectional RNN – Both Directions</p>
-        <RNNCanvas mode="birnn" steps={steps} animating={animating} />
+        <RNNCanvas mode="birnn" steps={steps} animating={animating} height={240} />
       </div>
     </div>
   )
@@ -127,8 +129,8 @@ function BiRNNLab() {
 function Seq2SeqLab() {
   const [animating, setAnimating] = useState(false)
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <Button onClick={() => setAnimating(a => !a)} variant={animating ? 'danger' : 'primary'} className="w-full mb-3">
           {animating ? 'Pause' : 'Animate'}
         </Button>
@@ -145,9 +147,9 @@ function Seq2SeqLab() {
           <div className="flex items-center gap-2"><span className="w-3 h-2 rounded bg-orange-500 inline-block"></span><span>Decoder hidden states</span></div>
         </div>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">Seq2Seq – Encoder → Context → Decoder</p>
-        <RNNCanvas mode="seq2seq" steps={3} animating={animating} />
+        <RNNCanvas mode="seq2seq" steps={3} animating={animating} height={240} />
       </div>
     </div>
   )
@@ -161,8 +163,8 @@ function BPTTLab() {
   const [animating, setAnimating] = useState(false)
   const [truncate, setTruncate] = useState(false)
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="BPTT Config">
           <Slider label="Sequence Length" value={steps} min={3} max={6} onChange={setSteps} />
         </ControlSection>
@@ -181,9 +183,9 @@ function BPTTLab() {
           <strong>Truncated BPTT:</strong> Only backpropagate k steps instead of full T.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">BPTT – Gradient Flow Backward Through Time</p>
-        <RNNCanvas mode="bptt" steps={steps} animating={animating} />
+        <RNNCanvas mode="bptt" steps={steps} animating={animating} height={240} />
       </div>
     </div>
   )
@@ -204,8 +206,8 @@ function LSTMLab() {
   const hiddenState = outputGate * Math.tanh(cellState)
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-1">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4 space-y-1">
         <ControlSection title="Gate Controls">
           <Slider label="Forget Gate (f)" value={forgetGate} min={0} max={1} step={0.01} onChange={setForgetGate} unit="" />
           <Slider label="Input Gate (i)" value={inputGate} min={0} max={1} step={0.01} onChange={setInputGate} unit="" />
@@ -229,11 +231,12 @@ function LSTMLab() {
           <code>hₜ = o·tanh(Cₜ)</code> – Hidden
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
+      <div className="md:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden p-3">
         <p className="text-xs text-slate-400 font-medium mb-2">LSTM – Gate Mechanics (use sliders to control)</p>
         <RNNCanvas
           mode="lstm" steps={1} animating={animating}
           lstmGates={{ forget: forgetGate, input: inputGate, cell: cellUpdate, output: outputGate }}
+          height={240}
         />
         {/* Gate meaning guide */}
         <div className="mt-3 grid grid-cols-4 gap-2">

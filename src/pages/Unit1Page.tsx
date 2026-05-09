@@ -45,20 +45,20 @@ export default function Unit1Page() {
   }, [searchParams])
 
   return (
-    <div className="p-4 max-w-7xl mx-auto animate-fadeInUp">
-      <div className="mb-4">
-        <h1 className="text-lg font-bold text-slate-800">Chapter I – Foundations of Deep Learning</h1>
-        <p className="text-sm text-slate-500">Perceptron, Neural Networks, Activations, Optimizers, Loss Functions</p>
+    <div className="min-h-screen bg-slate-50 p-2 sm:p-4 md:p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-3 sm:mb-4 md:mb-6">
+          <h1 className="text-base sm:text-lg md:text-2xl font-bold text-slate-800">Chapter I – Foundations</h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">Perceptron, Networks, Activations, Optimizers</p>
+        </div>
+
+        {activeLab === 'perceptron' && <PerceptronLab />}
+        {activeLab === 'nn_builder' && <NNBuilderLab />}
+        {activeLab === 'activation' && <ActivationLab />}
+        {activeLab === 'optimizer' && <OptimizerLab />}
+        {activeLab === 'loss' && <LossCurveLab />}
+        {activeLab === 'overfit' && <OverfitLab />}
       </div>
-
-      {/* Lab content controlled by URL or defaults; tabs removed */}
-
-      {activeLab === 'perceptron' && <PerceptronLab />}
-      {activeLab === 'nn_builder' && <NNBuilderLab />}
-      {activeLab === 'activation' && <ActivationLab />}
-      {activeLab === 'optimizer' && <OptimizerLab />}
-      {activeLab === 'loss' && <LossCurveLab />}
-      {activeLab === 'overfit' && <OverfitLab />}
     </div>
   )
 }
@@ -83,8 +83,8 @@ function PerceptronLab() {
   })()
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Inputs">
           {inputs.map((v, i) => (
             <Slider key={i} label={`x${i+1}`} value={v} min={-2} max={2} step={0.1}
@@ -107,7 +107,7 @@ function PerceptronLab() {
         </ControlSection>
         <InfoBadge label="Weighted Sum (z)" value={z.toFixed(4)} color="blue" />
         <InfoBadge label="Output f(z)" value={output.toFixed(4)} color="green" />
-        <Button onClick={() => setAnimating(a => !a)} variant="primary" className="w-full mt-2">
+        <Button onClick={() => setAnimating(a => !a)} variant="primary" className="w-full mt-2 text-sm">
           {animating ? <><Pause size={14} className="inline mr-1" />Pause</> : <><Play size={14} className="inline mr-1" />Animate</>}
         </Button>
         <ExplanationBox>
@@ -115,7 +115,7 @@ function PerceptronLab() {
           Adjust weights and inputs to see how the signal flows through a single neuron.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 340 }}>
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240, height: 'auto' }}>
         <PerceptronCanvas inputs={inputs} weights={weights} bias={bias}
           activation={activation} output={output} animating={animating} />
       </div>
@@ -242,9 +242,9 @@ function NNBuilderLab() {
   const weights = layers.map(l => l.weights)
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
       {/* Controls */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-1 overflow-y-auto" style={{ maxHeight: 680 }}>
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4 space-y-1 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 200px)' }}>
         <ControlSection title="Architecture">
           <Slider label="Input Neurons" value={inputSize} min={1} max={8} onChange={v => { setInputSize(v); trainingRef.current = false; setTraining(false) }} />
           {hiddenLayers.map((l, i) => (
@@ -300,12 +300,12 @@ function NNBuilderLab() {
       </div>
 
       {/* Canvas */}
-      <div className="lg:col-span-2 space-y-3">
-        <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden" style={{ height: 400 }}>
+      <div className="md:col-span-2 space-y-3">
+        <div className="bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ height: 240 }}>
           <div className="flex items-center gap-2 px-3 pt-2 pb-1">
-            <span className="text-xs text-slate-400 font-mono">Architecture: [{layerSizes.join(' → ')}]</span>
+            <span className="text-xs text-slate-400 font-mono truncate">Architecture: [{layerSizes.join(' → ')}]</span>
             {signalPhase !== 'idle' && (
-              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${signalPhase === 'forward' ? 'bg-blue-900 text-blue-300' : 'bg-orange-900 text-orange-300'}`}>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium whitespace-nowrap ${signalPhase === 'forward' ? 'bg-blue-900 text-blue-300' : 'bg-orange-900 text-orange-300'}`}>
                 {signalPhase === 'forward' ? '→ Forward' : '← Backward'}
               </span>
             )}
@@ -341,12 +341,12 @@ function ActivationLab() {
     linear: 'f(x) = x. No non-linearity. Used only in regression output layers.',
   }
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Activation Function">
           {fns.map(fn => (
             <button key={fn} onClick={() => setSelected(fn)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm mb-1 transition-colors ${
+              className={`w-full text-left px-3 py-2 rounded-lg text-xs sm:text-sm mb-1 transition-colors ${
                 selected === fn ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -355,13 +355,13 @@ function ActivationLab() {
           ))}
         </ControlSection>
         <ExplanationBox>
-          <strong>{selected.toUpperCase().replace('_', ' ')}:</strong><br />
-          {descriptions[selected]}
+          <strong className="text-xs sm:text-sm">{selected.toUpperCase().replace('_', ' ')}:</strong><br />
+          <span className="text-xs">{descriptions[selected]}</span>
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 p-4">
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 p-3 sm:p-4">
         <p className="text-xs text-slate-400 mb-3 font-medium">Activation Function + Derivative</p>
-        <ActivationChart fn={selected} width={560} height={320} />
+        <ActivationChart fn={selected} width={Math.min(560, window.innerWidth - 40)} height={240} />
         <div className="mt-3 flex gap-3 text-xs">
           <span className="flex items-center gap-1"><span className="w-6 h-0.5 bg-blue-500 inline-block"></span> f(x)</span>
           <span className="flex items-center gap-1"><span className="w-6 h-0.5 bg-orange-400 inline-block"></span> f'(x)</span>
@@ -536,8 +536,8 @@ function OptimizerLab() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Settings">
           <Slider label="Learning Rate" value={lr} min={0.0001} max={0.05} step={0.0001} onChange={setLr} />
         </ControlSection>
@@ -562,8 +562,8 @@ function OptimizerLab() {
           Global minimum at (1,1). Each optimizer takes a different path to reach it.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-        <canvas ref={canvasRef} width={580} height={400} className="w-full h-full" />
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
       </div>
     </div>
   )
@@ -597,8 +597,8 @@ function LossCurveLab() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Settings">
           <Slider label="Learning Rate" value={lr} min={0.001} max={0.1} step={0.001} onChange={setLr} />
         </ControlSection>
@@ -617,8 +617,8 @@ function LossCurveLab() {
           When val loss diverges from train loss = overfitting. Adjust learning rate to observe convergence speed.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2">
-        <LossChart data={history} title="Loss Curves (Train vs Val)" height={380} />
+      <div className="md:col-span-2">
+        <LossChart data={history} title="Loss Curves (Train vs Val)" height={280} />
       </div>
     </div>
   )
@@ -725,18 +725,18 @@ function OverfitLab() {
   }, [degree, noise, nPoints])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
+      <div className="bg-white rounded-lg sm:rounded-xl border border-slate-200 shadow-sm p-3 sm:p-4">
         <ControlSection title="Model Complexity">
           <Slider label="Polynomial Degree" value={degree} min={1} max={12} onChange={setDegree} />
           <Slider label="Noise Level" value={noise} min={0} max={1} step={0.05} onChange={setNoise} />
           <Slider label="Data Points" value={nPoints} min={5} max={50} onChange={setNPoints} />
         </ControlSection>
-        <Button onClick={generateData} variant="secondary" className="w-full mb-3">Resample Data</Button>
+        <Button onClick={generateData} variant="secondary" className="w-full mb-3 text-sm">Resample Data</Button>
         <div className="space-y-2 text-xs">
-          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500 inline-block"></span><span>Degree ≤ 2: Underfitting</span></div>
-          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-violet-500 inline-block"></span><span>Degree 3–5: Good fit</span></div>
-          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500 inline-block"></span><span>Degree ≥ 6: Overfitting</span></div>
+          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-orange-500 inline-block flex-shrink-0"></span><span>Degree ≤ 2: Underfitting</span></div>
+          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-violet-500 inline-block flex-shrink-0"></span><span>Degree 3–5: Good fit</span></div>
+          <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-red-500 inline-block flex-shrink-0"></span><span>Degree ≥ 6: Overfitting</span></div>
         </div>
         <ExplanationBox>
           <strong>Bias-Variance Tradeoff:</strong><br />
@@ -745,8 +745,8 @@ function OverfitLab() {
           Goal: find the sweet spot.
         </ExplanationBox>
       </div>
-      <div className="lg:col-span-2 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
-        <canvas ref={canvasRef} width={580} height={400} className="w-full h-full" />
+      <div className="md:col-span-2 bg-slate-900 rounded-lg sm:rounded-xl border border-slate-700 overflow-hidden" style={{ minHeight: 240 }}>
+        <canvas ref={canvasRef} width={580} height={240} className="w-full h-full" />
       </div>
     </div>
   )
